@@ -27,7 +27,6 @@ import com.projecto.finalspringboot.service.IClienteService;
 
 @RestController
 @RequestMapping("/clientes")
-//@CrossOrigin()
 public class ClienteController {
 	
 	@Autowired

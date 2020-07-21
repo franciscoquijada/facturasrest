@@ -2,9 +2,6 @@ package com.projecto.finalspringboot.dto;
 
 import org.springframework.hateoas.ResourceSupport;
 
-//import com.escalab.model.Medico;
-//import com.escalab.model.Paciente;
-
 public class FacturaDTO extends ResourceSupport{
 	
 	private Integer idFactura;

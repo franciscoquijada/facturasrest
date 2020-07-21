@@ -1,6 +1,5 @@
 package com.projecto.finalspringboot;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projecto.finalspringboot.model.ResetToken;
-import com.projecto.finalspringboot.model.Usuario;
 import com.projecto.finalspringboot.service.ILoginService;
 import com.projecto.finalspringboot.service.IResetTokenService;
 //import com.projecto.finalspringboot.util.EmailUtil;
@@ -33,47 +31,9 @@ public class LoginController {
 	@Autowired
 	private IResetTokenService tokenService;
 	
-	/*@Autowired
-	private EmailUtil emailUtil;*/
-	
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-	/*
-	@PostMapping(value = "/enviarCorreo", consumes = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<Integer> enviarCorreo(@RequestBody String correo) {
-		int rpta = 0;
-		
-		try {
-			Usuario us = service.verificarNombreUsuario(correo);
-			if (us != null && us.getIdUsuario() > 0) {
-			
-				ResetToken token = new ResetToken();
-				token.setToken(UUID.randomUUID().toString());
-				token.setUser(us);
-				token.setExpiracion(10);
-				tokenService.guardar(token);
-				
-				Mail mail = new Mail();
-				mail.setFrom("email.prueba.demo@gmail.com");
-				mail.setTo(us.getUsername());
-				mail.setSubject("RESTABLECER CONTRASEÑA - MEDIAPP");
-				
-				Map<String, Object> model = new HashMap<>();
-				String url = "http://localhost:4200/recuperar/" + token.getToken();
-				model.put("user", token.getUser().getUsername());
-				model.put("resetUrl", url);
-				mail.setModel(model);
-				emailUtil.enviarMail(mail);
-				rpta = 1;
-				System.out.println("entreee");
-			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
-	}*/
-		
+	
 	@GetMapping(value = "/restablecer/verificar/{token}")
 	public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token) {
 		int rpta = 0;

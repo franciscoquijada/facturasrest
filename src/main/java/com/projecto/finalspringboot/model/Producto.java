@@ -32,8 +32,8 @@ public class Producto {
 		return idProducto;
 	}
 
-	public void setIdArchivo(Integer idArchivo) {
-		this.idProducto = idArchivo;
+	public void setIdProducto(Integer idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public String getNombre() {
@@ -51,6 +51,5 @@ public class Producto {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-	
-	
+
 }
