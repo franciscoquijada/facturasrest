@@ -1,0 +1,57 @@
+create table oauth_refresh_token (
+                                     token_id VARCHAR(256),
+                                     token bytea,
+                                     authentication bytea
+);
+
+create table oauth_access_token (
+                                    token_id VARCHAR(256),
+                                    token bytea,
+                                    authentication_id VARCHAR(256),
+                                    user_name VARCHAR(256),
+                                    client_id VARCHAR(256),
+                                    authentication bytea,
+                                    refresh_token VARCHAR(256)
+);
+
+--USUARIOS DE EJEMPLO CON CLAVE 123
+INSERT INTO usuario(id_usuario, nombre, clave, estado) values (1, 'administrador', '$2a$10$ju20i95JTDkRa7Sua63JWOChSBc0MNFtG/6Sps2ahFFqN.HCCUMW.', '1');
+INSERT INTO usuario(id_usuario, nombre, clave, estado) values (2, 'usuario', '$2a$10$ju20i95JTDkRa7Sua63JWOChSBc0MNFtG/6Sps2ahFFqN.HCCUMW.', '1');
+
+
+-- Rol de ejemplo
+INSERT INTO Rol (id_rol, nombre, descripcion) VALUES (1, 'ADMIN', 'Administrador');
+INSERT INTO Rol (id_rol, nombre, descripcion) VALUES (2, 'USER', 'Usuario');
+
+-- usuario_rol de ejemplo
+INSERT INTO usuario_rol (id_usuario, id_rol) VALUES (1, 1);
+INSERT INTO usuario_rol (id_usuario, id_rol) VALUES (2, 2);
+
+-- Insertar clientes
+
+INSERT INTO clientes(nombres, apellidos, rut, email, telefono) VALUES ('CARLOS', 'RUIZ', '72302301' , 'carlos@gmail.com', '940161759');
+INSERT INTO clientes(nombres, apellidos, rut, email, telefono) VALUES ('PEDRO', 'ZIZI', '72546465' , 'pedro@gmail.com', '940161759');
+INSERT INTO clientes(nombres, apellidos, rut, email, telefono) VALUES ('JOSE', 'YIYI', '72302301' , 'jose@gmail.com', '940161759');
+INSERT INTO clientes(nombres, apellidos, rut, email, telefono) VALUES ('MARIA', 'LILI', '72546465' , 'maria@gmail.com', '940161759');
+
+-- Insertar facturas
+
+INSERT INTO facturas(descripcion, observacion, cliente_id_cliente) VALUES ('Esta es una factura de prueba', 'Esta factura es importante', 1);
+INSERT INTO facturas(descripcion, observacion, cliente_id_cliente) VALUES ('Factura de prueba 2', 'Esta es la segunda prueba', 2);
+
+
+-- Insertar productos
+
+INSERT INTO productos(nombre, precio) VALUES ('camara fotografica', 130000); -- id: 1
+INSERT INTO productos(nombre, precio) VALUES ('celular', 150000); -- id: 2
+INSERT INTO productos(nombre, precio) VALUES ('teclado', 180000); -- id: 3
+INSERT INTO productos(nombre, precio) VALUES ('mouse', 160000); -- id: 4
+INSERT INTO productos(nombre, precio) VALUES ('monitor', 120000); -- id: 5
+INSERT INTO productos(nombre, precio) VALUES ('parlante', 120000); -- id: 6
+
+-- Insertar detalle_factura
+
+INSERT INTO detalle_factura(cantidad, producto_id, factura_id) VALUES (2, 1, 1);
+INSERT INTO detalle_factura(cantidad, producto_id, factura_id) VALUES (1, 2, 1);
+INSERT INTO detalle_factura(cantidad, producto_id, factura_id) VALUES (2, 3, 2);
+INSERT INTO detalle_factura(cantidad, producto_id, factura_id) VALUES (2, 4, 2);
